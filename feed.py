@@ -8,9 +8,6 @@ with open('feed.yaml', 'r') as file:
     'xmlns:itunes':'http://www.itunes.com/dtds/podcast-1.0.dtd',
     'xmlns:content':'http://purl.org/rss/1.0/modules/content/'})
 
-
-print("YAML title: ",yaml_data['title'])
-
 channel_element = xml_tree.SubElement(rss_element, 'channel')
 
 link_prefix = yaml_data['link']
@@ -25,7 +22,6 @@ xml_tree.SubElement(channel_element, 'language').text = yaml_data['language']
 xml_tree.SubElement(channel_element, 'link').text =link_prefix
 
 xml_tree.SubElement(channel_element, 'itunes:category', {'text': yaml_data['category']})
-
 
 for item in yaml_data['item']:
     item_element = xml_tree.SubElement(channel_element, 'item')
